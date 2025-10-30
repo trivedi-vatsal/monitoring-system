@@ -3,6 +3,10 @@ import type { Application } from './declarations'
 import { generateOpenAPIComponents, generateOpenAPITags } from './utils/swagger-generator'
 
 export default (app: Application) => {
+  const config = app.get('host')
+  const port = app.get('port')
+  const baseUrl = `http://${config}:${port}`
+
   app.configure(
     swagger({
       specs: {
@@ -16,8 +20,8 @@ export default (app: Application) => {
         },
         servers: [
           {
-            url: 'http://localhost:3030',
-            description: 'Development server'
+            url: baseUrl,
+            description: 'Application server'
           }
         ],
         components: {
