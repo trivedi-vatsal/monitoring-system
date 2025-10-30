@@ -37,6 +37,7 @@
   "scripts": {
     "dev": "nodemon -x ts-node --require dotenv/config src/index.ts",
     "compile": "rimraf lib && tsc",
+    "build": "npm install && rimraf lib && tsc",
     "start": "node lib/",
     "prettier": "npx prettier \"**/*.ts\" --write",
     "mocha": "cross-env NODE_ENV=test mocha test/ --require ts-node/register --recursive --extension .ts --exit",
